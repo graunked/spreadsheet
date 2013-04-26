@@ -9,9 +9,24 @@
     <script src="src/core.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css"></link>
     <link rel="stylesheet" href="css/bootstrap-responsive.css"></link>
+    <style>
+      input { border: none ! important; }
+    </style>
   </head>
   <body ng-app>
-  
+    <div class="container-fluid" ng-controller=sheet>
+      <div class="row">
+        <div class="span8 offset4">
+          <table class="table">
+            <tr ng-repeat="($index, row) in rows">
+              <td><input ng-model="row[0]"></input></td>
+              <td>{{compute($index)}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
 
+    </div>
+  
   </body>
 </html>
