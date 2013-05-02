@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="css/bootstrap.css">
-<div>
-  <input></input>
-  <input disabled=disabled></input>
+<script src="lib/angular.js"></script>
+<div ng-app>
+  <input ng-model="cell"></input>
+  <input ng-binding="cell" disabled=disabled></input>
 </div>
