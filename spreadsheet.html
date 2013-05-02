@@ -13,7 +13,12 @@
 
 <div ng-app ng-controller="sheet">
   <table>
+    <tr class="column-label">
+      <td></td>
+      <td ng-repeat="column in columns">{{column}}</td>
+    </tr>
     <tr ng-repeat="row in rows">
+      <td class="row-label">{{row}}</td>
       <td ng-repeat="column in columns">
         <div>
           <input ng-model="cells[column+row]"></input>
@@ -26,8 +31,8 @@
 </div>
 
 <style>
-  .output, input {
-    font-family: sans-serif;
+  body { font-family: sans-serif; }
+  .output, input { 
     font-size: 10pt;
     position: absolute;
     height: 1.2em;
@@ -51,6 +56,11 @@
     height: 16pt;
   } 
   td { border: 1px solid #EEE; }
+  .column-label  > td, .row-label {
+    text-align: center;
+    background: #EEE;
+  }
+  .row-label { width: 2em; }
  
 </style>
 
