@@ -2,14 +2,17 @@
 <script src="lib/angular.js"></script>
 
 <script>
-  sheet = function($scope) {
-    $scope.cell = "hello spreadsheet!";
+  sheet = function($scope, $parse) {
+    $scope.cell = "";
+    $scope.compute = function() {
+      return $parse($scope.cell)($scope);
+    };
   }
 </script>
 
 <div ng-app ng-controller="sheet">
   <input ng-model="cell"></input>
-  <div ng-bind="cell" class="output"></div>
+  <div ng-bind="compute()" class="output"></div>
 </div>
 
 <style>
