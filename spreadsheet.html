@@ -2,16 +2,27 @@
 
 <script>
   sheet = function($scope, $parse) {
-    $scope.cell = "";
-    $scope.compute = function() {
-      return $parse($scope.cell)($scope);
+    $scope.columns = ['A', 'B', 'C', 'D'];
+    $scope.rows = [1, 2, 3, 4];
+    $scope.cells = {};
+    $scope.compute = function(cell) {
+      return $parse($scope.cells[cell])($scope);
     };
   }
 </script>
 
 <div ng-app ng-controller="sheet">
-  <input ng-model="cell"></input>
-  <div ng-bind="compute()" class="output"></div>
+  <table>
+    <tr ng-repeat="row in rows">
+      <td ng-repeat="column in columns">
+        <div>
+          <input ng-model="cells[column+row]"></input>
+          <div ng-bind="compute(column+row)"
+               class="output"></div>
+        </div>
+      </td>
+    </tr>
+  </table>
 </div>
 
 <style>
@@ -25,15 +36,22 @@
     overflow: hidden;
     padding-left: 4pt;
   }
-  input { background: rgba(255, 0, 0, 0.2); border: none;}
+  input { border: none;}
   .output { 
-    background: rgba(200, 200, 255, 1);
+    background: white; 
     pointer-events: none;
     padding-top: 2pt;
     height: 14pt;
   }
   input:focus + .output { display: none; }
-  
+ 
+  table { border-collapse: collapse; } 
+  td > div {
+    width: 55pt;
+    height: 16pt;
+  } 
+  td { border: 1px solid #EEE; }
+ 
 </style>
 
 
