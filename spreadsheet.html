@@ -1,7 +1,13 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <script src="lib/angular.js"></script>
 
-<div ng-app>
+<script>
+  sheet = function($scope) {
+    $scope.cell = "hello spreadsheet!";
+  }
+</script>
+
+<div ng-app ng-controller="sheet">
   <input ng-model="cell"></input>
   <div ng-bind="cell" class="output"></div>
 </div>
