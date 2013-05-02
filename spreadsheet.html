@@ -1,6 +1,17 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <script src="lib/angular.js"></script>
+
 <div ng-app>
   <input ng-model="cell"></input>
-  <input ng-binding="cell" disabled=disabled></input>
+  <div ng-bind="cell" class="output"></div>
 </div>
+
+<style>
+  .output {
+    display: inline-block;
+    border: 1px solid #EEE;
+    padding: 2.3pt;
+  }
+</style>
+
+
