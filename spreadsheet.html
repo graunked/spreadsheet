@@ -5,8 +5,14 @@
     $scope.columns = ['A', 'B', 'C', 'D'];
     $scope.rows = [1, 2, 3, 4];
     $scope.cells = {};
+    
+    process = function(exp) {
+      return exp.replace(/[A-Z]\d+/, function(ref) {
+        return 'compute("' + ref + '")';
+      })
+    }
     $scope.compute = function(cell) {
-      return $parse($scope.cells[cell])($scope);
+      return $parse(process($scope.cells[cell]))($scope);
     };
   }
 </script>
